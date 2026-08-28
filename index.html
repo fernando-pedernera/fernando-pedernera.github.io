@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es" class="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernando Pedernera | AI & Machine Learning Engineer</title>
+    <meta name="description" content="Portafolio de Fernando Pedernera. Ingeniero especializado en IA Generativa, Machine Learning, Data Engineering y sistemas multiagente.">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">FP<span>.ia</span></a>
+            <ul class="nav-links">
+                <li><a href="#about" class="es">Sobre Mí</a><a href="#about" class="en">About Me</a></li>
+                <li><a href="#projects" class="es">Proyectos</a><a href="#projects" class="en">Projects</a></li>
+                <li><a href="#dashboards">Dashboards</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact" class="es">Contacto</a><a href="#contact" class="en">Contact</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle">
+                        <span class="es">🇺🇸 EN</span>
+                        <span class="en">🇦🇷 ES</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-content fade-in">
+            <h2 class="greeting"><span class="es">👋 ¡Hola! Soy</span><span class="en">👋 Hi! I'm</span></h2>
+            <h1 class="name">Fernando Pedernera</h1>
+            <h3 class="role"><span class="gradient-text">AI Engineer</span> | Machine Learning</h3>
+            <p class="bio es">
+                Soy un profesional especializado en <strong>ingeniería de IA y machine learning</strong>, con experiencia en el diseño y desarrollo de sistemas inteligentes, agentes de IA, pipelines de datos y modelos de lenguaje. Me enfoco en construir soluciones que combinan <strong>IA Generativa, RAG, automatización y arquitecturas cloud</strong> para resolver problemas reales con impacto medible.
+            </p>
+            <p class="bio en">
+                I am a professional specialized in <strong>AI and machine learning engineering</strong>, with experience in designing and developing intelligent systems, AI agents, data pipelines, and language models. I focus on building solutions that combine <strong>Generative AI, RAG, automation, and cloud architectures</strong> to solve real-world problems with measurable impact.
+            </p>
+            <div class="hero-details">
+                <span class="es"><i class="fa-solid fa-graduation-cap"></i> Máster en Innovación y Transformación Digital</span>
+                <span class="en"><i class="fa-solid fa-graduation-cap"></i> Master's in Innovation and Digital Transformation</span>
+                <span><i class="fa-solid fa-location-dot"></i> Córdoba, Argentina</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary"><span class="es">Ver Proyectos</span><span class="en">View Projects</span></a>
+                <a href="#contact" class="btn btn-secondary"><span class="es">Contactar</span><span class="en">Contact Me</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in"><span class="es">🚀 Proyectos Destacados</span><span class="en">🚀 Featured Projects</span></h2>
+            <div class="grid projects-grid">
+                
+                <!-- Project 1 -->
+                <article class="card project-card fade-in">
+                    <div class="card-content">
+                        <h3>⚡ GridFlow AI</h3>
+                        <p class="subtitle es">Mitigación Inteligente de Curtailment con Azure AI</p>
+                        <p class="subtitle en">Intelligent Curtailment Mitigation with Azure AI</p>
+                        <p class="description es">Proyecto oficial de la <strong>Microsoft Agents League 2026</strong>. Sistema multiagente que utiliza Azure AI para mitigar el curtailment energético de forma inteligente, optimizando la distribución de energía en redes eléctricas mediante agentes de IA coordinados.</p>
+                        <p class="description en">Official project for the <strong>Microsoft Agents League 2026</strong>. Multi-agent system that uses Azure AI to intelligently mitigate energy curtailment, optimizing energy distribution in electrical grids through coordinated AI agents.</p>
+                        <div class="tags">
+                            <span>Python</span><span>Azure AI</span><span>Multi-Agent Systems</span><span>Azure OpenAI</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/fernando-pedernera/GridFlow_AI" target="_blank" class="repo-link"><i class="fa-brands fa-github"></i> <span class="es">Ver Código</span><span class="en">View Code</span></a>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="card project-card fade-in">
+                    <div class="card-content">
+                        <h3>🔍 RAGulator</h3>
+                        <p class="subtitle es">Framework para Sistemas RAG</p>
+                        <p class="subtitle en">Framework for RAG Systems</p>
+                        <p class="description es">Framework para transformar la incertidumbre en confianza absoluta en sistemas de Retrieval-Augmented Generation. Permite construir y evaluar pipelines RAG robustos con métricas de calidad y trazabilidad.</p>
+                        <p class="description en">Framework to transform uncertainty into absolute confidence in Retrieval-Augmented Generation systems. Allows building and evaluating robust RAG pipelines with quality metrics and traceability.</p>
+                        <div class="tags">
+                            <span>Python</span><span>LangChain</span><span>OpenAI</span><span>RAG</span><span>Vector Databases</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/fernando-pedernera/RAGulator" target="_blank" class="repo-link"><i class="fa-brands fa-github"></i> <span class="es">Ver Código</span><span class="en">View Code</span></a>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="card project-card fade-in">
+                    <div class="card-content">
+                        <h3>⚽ Fútbol GenAI + RAG</h3>
+                        <p class="subtitle es">Consulta de Partidos en Lenguaje Natural</p>
+                        <p class="subtitle en">Football Matches Queries in Natural Language</p>
+                        <p class="description es">Aplicación conversacional que responde consultas en lenguaje natural sobre partidos de fútbol del día de las ligas y copas más importantes, usando IA Generativa y RAG.</p>
+                        <p class="description en">Conversational application that answers natural language queries about today's football matches from top leagues and cups, using Generative AI and RAG.</p>
+                        <div class="tags">
+                            <span>Python</span><span>FastAPI</span><span>LangChain</span><span>OpenAI GPT</span><span>Streamlit</span><span>Docker</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/fernando-pedernera/genai-rag-project-futbol" target="_blank" class="repo-link"><i class="fa-brands fa-github"></i> <span class="es">Ver Código</span><span class="en">View Code</span></a>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="card project-card fade-in">
+                    <div class="card-content">
+                        <h3>📊 ML Notebooks</h3>
+                        <p class="subtitle es">Modelos Avanzados y Deep Learning</p>
+                        <p class="subtitle en">Advanced Models & Deep Learning</p>
+                        <p class="description es">Colección de notebooks de Machine Learning con foco en Deep Learning y arquitecturas avanzadas para el procesamiento de datos.</p>
+                        <p class="description en">Collection of Machine Learning notebooks focusing on Deep Learning and advanced architectures for data processing.</p>
+                        <div class="tags">
+                            <span>Python</span><span>TensorFlow</span><span>PyTorch</span><span>Jupyter</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/fernando-pedernera/machine-learning-notebooks" target="_blank" class="repo-link"><i class="fa-brands fa-github"></i> <span class="es">Ver Código</span><span class="en">View Code</span></a>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="card project-card fade-in">
+                    <div class="card-content">
+                        <h3>🌍 SISMOS ETL</h3>
+                        <p class="subtitle es">Pipeline con Airflow, PostgreSQL y Streamlit</p>
+                        <p class="subtitle en">Pipeline with Airflow, PostgreSQL & Streamlit</p>
+                        <p class="description es">Pipeline automatizado para extraer datos de sismos desde la API de USGS, transformarlos y cargarlos en PostgreSQL (Azure) usando Airflow. Visualización final en Streamlit.</p>
+                        <p class="description en">Automated pipeline to extract earthquake data from the USGS API, transform it, and load it into PostgreSQL (Azure) using Airflow. Final visualization in Streamlit.</p>
+                        <div class="tags">
+                            <span>Python</span><span>Airflow</span><span>PostgreSQL</span><span>Docker</span><span>Streamlit</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/fernando-pedernera/sismos_etl" target="_blank" class="repo-link"><i class="fa-brands fa-github"></i> <span class="es">Ver Código</span><span class="en">View Code</span></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboards Section -->
+    <section id="dashboards" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">🏆 Dashboards Power BI</h2>
+            <p class="section-subtitle fade-in es">Participación en el <strong>Power BI Data Visualization World Champs</strong>, diseñando dashboards competitivos con foco en claridad visual, modelado DAX avanzado y narrativa accesible.</p>
+            <p class="section-subtitle fade-in en">Participation in the <strong>Power BI Data Visualization World Champs</strong>, designing competitive dashboards focused on visual clarity, advanced DAX modeling, and accessible storytelling.</p>
+            
+            <div class="grid dashboards-grid">
+                <article class="card dashboard-card fade-in">
+                    <div class="card-content">
+                        <h3>City Livability Trends</h3>
+                        <p class="round es">Ronda 1</p>
+                        <p class="round en">Round 1</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiMGY1NDIyY2YtNjhlOC00MzUxLThiMTMtYTUwODcxNDE4NTNkIiwidCI6ImFlYzc2MmU0LTNkNTQtNDk1ZS1hOGZlLTQyODdkY2U2ZmU2OSIsImMiOjh9&embedImagePlaceholder=true" target="_blank" class="btn btn-outline"><i class="fa-solid fa-chart-line"></i> <span class="es">Dashboard Interactivo</span><span class="en">Interactive Dashboard</span></a>
+                        <a href="https://community.fabric.microsoft.com/t5/Power-BI-Community-Blog/Power-BI-Data-Visualization-World-Champs-Round-1-is-LIVE/ba-p/4916273" target="_blank" class="link-text"><span class="es">Ver Blog</span><span class="en">View Blog</span></a>
+                    </div>
+                </article>
+
+                <article class="card dashboard-card fade-in">
+                    <div class="card-content">
+                        <h3>Climate Change Indicators</h3>
+                        <p class="round es">Ronda 2</p>
+                        <p class="round en">Round 2</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiNTdkZjA5ZDItOTI4Mi00YWFjLWI4M2ItMjhjNGQ4MmIwM2E0IiwidCI6ImFlYzc2MmU0LTNkNTQtNDk1ZS1hOGZlLTQyODdkY2U2ZmU2OSIsImMiOjh9" target="_blank" class="btn btn-outline"><i class="fa-solid fa-chart-line"></i> <span class="es">Dashboard Interactivo</span><span class="en">Interactive Dashboard</span></a>
+                        <a href="https://community.fabric.microsoft.com/t5/Power-BI-Community-Blog/Power-BI-Data-Visualization-World-Champs-Round-2-is-LIVE/ba-p/4920346" target="_blank" class="link-text"><span class="es">Ver Blog</span><span class="en">View Blog</span></a>
+                    </div>
+                </article>
+
+                <article class="card dashboard-card fade-in">
+                    <div class="card-content">
+                        <h3>A Century of Olympic History</h3>
+                        <p class="round es">Ronda 3</p>
+                        <p class="round en">Round 3</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiN2IzYTUyZDItNGRmNy00MDNjLWI0ZjctNjA4YmQwYWM1MjU5IiwidCI6ImFlYzc2MmU0LTNkNTQtNDk1ZS1hOGZlLTQyODdkY2U2ZmU2OSIsImMiOjh9&pageName=f8c9b078e44b1cd6d7dc" target="_blank" class="btn btn-outline"><i class="fa-solid fa-chart-line"></i> <span class="es">Dashboard Interactivo</span><span class="en">Interactive Dashboard</span></a>
+                        <a href="https://community.fabric.microsoft.com/t5/Power-BI-Community-Blog/Power-BI-Data-Visualization-World-Champs-Round-3-is-LIVE/ba-p/4927173" target="_blank" class="link-text"><span class="es">Ver Blog</span><span class="en">View Blog</span></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in"><span class="es">🛠️ Tecnologías y Herramientas</span><span class="en">🛠️ Tech Stack</span></h2>
+            <div class="skills-container fade-in">
+                <div class="skill-pill"><i class="fa-brands fa-python"></i> Python</div>
+                <div class="skill-pill"><i class="fa-solid fa-robot"></i> OpenAI / GenAI</div>
+                <div class="skill-pill"><i class="fa-solid fa-link"></i> LangChain</div>
+                <div class="skill-pill"><i class="fa-brands fa-microsoft"></i> Azure</div>
+                <div class="skill-pill"><i class="fa-solid fa-bolt"></i> FastAPI</div>
+                <div class="skill-pill"><i class="fa-brands fa-docker"></i> Docker</div>
+                <div class="skill-pill"><i class="fa-solid fa-wind"></i> Apache Airflow</div>
+                <div class="skill-pill"><i class="fa-solid fa-database"></i> PostgreSQL</div>
+                <div class="skill-pill"><i class="fa-solid fa-layer-group"></i> Streamlit</div>
+                <div class="skill-pill"><i class="fa-solid fa-chart-bar"></i> Power BI</div>
+            </div>
+            
+            <div class="education fade-in">
+                <h3 class="es">🎓 Formación Continua</h3>
+                <h3 class="en">🎓 Continuous Education</h3>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <span class="number">286+</span>
+                        <span class="label es">Horas de Aprendizaje</span>
+                        <span class="label en">Learning Hours</span>
+                    </div>
+                    <div class="metric">
+                        <span class="number">331</span>
+                        <span class="label es">Módulos Completados</span>
+                        <span class="label en">Completed Modules</span>
+                    </div>
+                    <div class="metric">
+                        <span class="number">82</span>
+                        <span class="label es">Rutas Completadas</span>
+                        <span class="label en">Learning Paths</span>
+                    </div>
+                    <div class="metric">
+                        <span class="number">3</span>
+                        <span class="label es">Applied Skills</span>
+                        <span class="label en">Applied Skills</span>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://learn.microsoft.com/es-es/users/fernando-pedernera/transcript/73kn2h22mjk4x2w" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-microsoft"></i> <span class="es">Ver Expediente en Microsoft Learn</span><span class="en">View Transcript on Microsoft Learn</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container text-center fade-in">
+            <h2 class="section-title"><span class="es">📬 Hablemos</span><span class="en">📬 Let's Connect</span></h2>
+            <p class="contact-text es">💡 <em>Apasionado por construir sistemas de IA que generen impacto real. Siempre explorando lo que viene en GenAI, agentes y arquitecturas inteligentes.</em></p>
+            <p class="contact-text en">💡 <em>Passionate about building AI systems that generate real impact. Always exploring what's next in GenAI, agents, and intelligent architectures.</em></p>
+            
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/fernando-pedernera/" target="_blank" class="social-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="mailto:fernando.peder.ia@gmail.com" class="social-link"><i class="fa-solid fa-envelope"></i> Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="es">&copy; 2026 Fernando Pedernera. Diseñado para impactar con IA.</p>
+            <p class="en">&copy; 2026 Fernando Pedernera. Designed to make an impact with AI.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
