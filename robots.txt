@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fernando-pedernera.github.io/sitemap.xml
