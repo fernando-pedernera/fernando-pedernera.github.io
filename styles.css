@@ -785,6 +785,16 @@ footer {
         gap: 1rem;
     }
     
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
     .hamburger {
         display: block;
     }
