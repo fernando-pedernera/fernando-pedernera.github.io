@@ -240,6 +240,20 @@ a {
     color: var(--text-primary);
 }
 
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hamburger:hover {
+    color: var(--primary-color);
+}
+
 /* ===== Hero Section ===== */
 .hero {
     min-height: 100vh;
@@ -766,8 +780,25 @@ footer {
         gap: 1rem;
     }
     
+    .hamburger {
+        display: block;
+    }
+    
     .nav-links {
-        display: none; /* In a real app, you'd add a hamburger menu */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(13, 17, 23, 0.98);
+        flex-direction: column;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--surface-border);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        display: none;
+    }
+    
+    .nav-links.active {
+        display: flex;
     }
     
     .section {

@@ -51,6 +51,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Mobile Hamburger Menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinksMenu = document.getElementById('nav-links');
+    
+    if (hamburger && navLinksMenu) {
+        hamburger.addEventListener('click', () => {
+            navLinksMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        const navItems = navLinksMenu.querySelectorAll('a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinksMenu.classList.remove('active');
+            });
+        });
+    }
+
     // Language toggle logic
     const langToggleBtn = document.getElementById('langToggle');
     const htmlTag = document.documentElement;
