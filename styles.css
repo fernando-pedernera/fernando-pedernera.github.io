@@ -222,7 +222,6 @@ a {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-left: auto; /* Push to right if nav-links doesn't take space */
 }
 
 .logo {
@@ -240,6 +239,8 @@ a {
     display: flex;
     list-style: none;
     gap: 2rem;
+    flex: 1;
+    justify-content: center;
 }
 
 .nav-links a {
