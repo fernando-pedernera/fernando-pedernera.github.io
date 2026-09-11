@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hamburger && navLinksMenu) {
         hamburger.addEventListener('click', () => {
             navLinksMenu.classList.toggle('active');
+            hamburger.classList.remove('pulse-attention'); // Stop pulsing once discovered
         });
 
         // Close menu when clicking a link
