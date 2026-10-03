@@ -60,8 +60,10 @@ Este documento sirve como bitácora para repasar y entender todas las mejoras t�
 - **Archivos modificados:** `index.html`, `script.js`, `styles.css`
 - **Problema:** La tasa de clics en contacto era baja en comparación con las visitas y descargas de CV. Muchos usuarios no tienen configurado un cliente de correo predeterminado en su computadora y se cancelaba el clic al abrir `mailto:`.
 - **Solución implementada:**
-  - Rediseño de la tarjeta de contacto (`contact-card`) con efecto glassmorphism.
+  - Rediseño de la tarjeta de contacto (`contact-card`) con efecto glassmorphism centrado.
   - Inclusión de un bloque interactivo con la dirección de correo y un botón **"Copiar Email"** con retroalimentación visual inmediata ("¡Copiado!" con icono de verificación y temporizador de restablecimiento).
+  - Eliminación de la redundancia del botón `mailto:` para evitar que en computadoras se abra por error la app de correo local del sistema operativo.
+  - Botón dedicado y centrado a **LinkedIn** como red profesional principal.
   - Soporte de fallback para la API de Portapapeles (Clipboard API + `document.execCommand`).
-  - Separación y enriquecimiento de la telemetría en GA4 (`click_contact` diferenciando `copy_email`, `linkedin` y `email_client`).
+  - Separación y enriquecimiento de la telemetría en GA4 (`click_contact` diferenciando `copy_email` y `linkedin`).
 
