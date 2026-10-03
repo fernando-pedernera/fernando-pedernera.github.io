@@ -27,6 +27,34 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Filtro de Tráfico Propio (Admin) y Detección de Bots -->
+    <script>
+      (function() {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          if (params.get('admin') === 'true' || params.get('internal') === 'true') {
+            localStorage.setItem('fp_analytics_disabled', 'true');
+          } else if (params.get('admin') === 'false' || params.get('internal') === 'false') {
+            localStorage.removeItem('fp_analytics_disabled');
+          }
+        } catch (e) {}
+
+        // Detección de bots, webdrivers (Puppeteer/Selenium) y navegadores headless de data centers
+        const isBot = navigator.webdriver ||
+          /bot|crawler|spider|headless|puppeteer|selenium|preview|facebookexternalhit|whatsapp|linkedinbot/i.test(navigator.userAgent) ||
+          (window.innerWidth === 0 && window.innerHeight === 0);
+
+        // Si es tráfico propio o un bot, deshabilitar Google Analytics
+        if (localStorage.getItem('fp_analytics_disabled') === 'true' || isBot) {
+          window['ga-disable-G-XKD2H4L1LE'] = true;
+          window.isAnalyticsDisabled = true;
+          if (localStorage.getItem('fp_analytics_disabled') === 'true') {
+            console.log('%c[Analytics] 🛡️ Modo Administrador activo: Tu tráfico está excluido de GA4 en este navegador.', 'color: #009688; font-weight: bold;');
+          }
+        }
+      })();
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKD2H4L1LE"></script>
     <script>
@@ -392,9 +420,25 @@
             <p class="contact-text es">💡 <em>Apasionado por construir sistemas de IA que generen impacto real. Siempre explorando lo que viene en GenAI, agentes y arquitecturas inteligentes.</em></p>
             <p class="contact-text en">💡 <em>Passionate about building AI systems that generate real impact. Always exploring what's next in GenAI, agents, and intelligent architectures.</em></p>
             
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/fernando-pedernera/" target="_blank" class="social-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="mailto:fernando.peder.ia@gmail.com" class="social-link"><i class="fa-solid fa-envelope"></i> Email</a>
+            <div class="contact-card">
+                <div class="contact-email-box">
+                    <span class="contact-email-address" id="contactEmailAddress">fernando.peder.ia@gmail.com</span>
+                    <button type="button" class="btn-copy-email" id="copyEmailBtn" aria-label="Copiar correo electrónico" title="Copiar al portapapeles">
+                        <i class="fa-regular fa-copy" id="copyIcon"></i>
+                        <span id="copyFeedback" class="copy-label">
+                            <span class="es">Copiar</span><span class="en">Copy</span>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="https://www.linkedin.com/in/fernando-pedernera/" target="_blank" rel="noopener noreferrer" class="social-link linkedin-link">
+                        <i class="fa-brands fa-linkedin"></i> <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:fernando.peder.ia@gmail.com" class="social-link email-link" id="emailDirectLink">
+                        <i class="fa-solid fa-paper-plane"></i> <span class="es">Enviar Email</span><span class="en">Send Email</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

@@ -39,3 +39,29 @@ Este documento sirve como bitácora para repasar y entender todas las mejoras t�
 ## 5. Integración con Google Search Console
 - **Acción:** Configuración del dominio `https://fernando-pedernera.github.io/` como "Prefijo de URL".
 - **Por qué se hizo:** Para forzar a Google a indexar la página rápidamente sin esperar meses a que los bots la descubran por sí solos. La validación fue ágil gracias a la previa integración de Google Analytics en el código.
+
+## 6. Exclusión de Tráfico Propio (Modo Administrador)
+- **Archivos modificados:** `index.html`, `script.js`, `styles.css`
+- **Problema:** En conexiones hogareñas con IP dinámica, el filtro por IP de GA4 queda obsoleto al reiniciarse el router o cambiar de red Wi-Fi/móvil. Las visitas propias del autor distorsionaban métricas de tiempo de interacción y descargas de CV.
+- **Solución implementada:**
+  - Se configuró la exclusión mediante el mecanismo oficial `window['ga-disable-G-XKD2H4L1LE'] = true`.
+  - El usuario puede activar el modo admin en cualquier dispositivo (computadora o celular) visitando la web con `?admin=true` (ej. `https://fernando-pedernera.github.io/?admin=true`).
+  - La preferencia queda almacenada indefinidamente en `localStorage` (`fp_analytics_disabled`).
+  - Se diseñó un banner/toast visual y un log en consola que confirman la activación o desactivación (`?admin=false`).
+
+## 7. Filtrado Anti-Bots y Crawlers de Data Centers
+- **Archivos modificados:** `index.html`, `script.js`
+- **Problema:** Servicios cloud y scrapers ejecutados en centros de datos de Azure (Des Moines, Boydton) o AWS (Flint Hill) inflaban visitas sin interacción humana real.
+- **Solución implementada:**
+  - Detección en JavaScript de entornos automatizados antes de que cargue GA4: `navigator.webdriver`, expresiones regulares de User-Agents bots/crawlers/headless, y resoluciones de pantalla ficticias (0x0).
+  - Al detectarse un bot o navegador automatizado, se cancela la ejecución y envío de eventos hacia Google Analytics.
+
+## 8. Optimización de la Llamada a la Acción de Contacto
+- **Archivos modificados:** `index.html`, `script.js`, `styles.css`
+- **Problema:** La tasa de clics en contacto era baja en comparación con las visitas y descargas de CV. Muchos usuarios no tienen configurado un cliente de correo predeterminado en su computadora y se cancelaba el clic al abrir `mailto:`.
+- **Solución implementada:**
+  - Rediseño de la tarjeta de contacto (`contact-card`) con efecto glassmorphism.
+  - Inclusión de un bloque interactivo con la dirección de correo y un botón **"Copiar Email"** con retroalimentación visual inmediata ("¡Copiado!" con icono de verificación y temporizador de restablecimiento).
+  - Soporte de fallback para la API de Portapapeles (Clipboard API + `document.execCommand`).
+  - Separación y enriquecimiento de la telemetría en GA4 (`click_contact` diferenciando `copy_email`, `linkedin` y `email_client`).
+
