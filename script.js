@@ -125,6 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Go! Science & Technology Magazine Link
+    const navMagazines = [document.getElementById('navMagazineES'), document.getElementById('navMagazineEN')];
+    navMagazines.forEach(link => {
+        if (link) {
+            link.addEventListener('click', () => {
+                trackEvent('view_magazine', { 'magazine_name': 'Go! Science & Technology' });
+            });
+        }
+    });
+
     // --- Admin Notification Feedback Toast ---
     const showAdminToast = (enabled) => {
         const toast = document.createElement('div');
