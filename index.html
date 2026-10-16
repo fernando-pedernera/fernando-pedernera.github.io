@@ -453,5 +453,27 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- CMR Portfolio & CV Click Tracker -->
+    <script>
+    (function() {
+      var WEBHOOK = "https://script.google.com/macros/s/AKfycbyBgvneeL-iJRKhfnShQflGk5kZEtaLQ_0R1uLFN5HyipLy-1syUwlzzZUAAUIoj-wk/exec";
+      var params = new URLSearchParams(window.location.search);
+      var tid = params.get("ref") || sessionStorage.getItem("cmr_tid");
+      if (tid && WEBHOOK.indexOf("https://") === 0) {
+        sessionStorage.setItem("cmr_tid", tid);
+        if (!sessionStorage.getItem("cmr_clicked_" + tid)) {
+          sessionStorage.setItem("cmr_clicked_" + tid, "1");
+          fetch(WEBHOOK + "?action=click&tid=" + encodeURIComponent(tid), { mode: "no-cors" }).catch(function(){});
+        }
+        document.addEventListener("click", function(e) {
+          var a = e.target.closest("a");
+          if (a && (a.href.toLowerCase().indexOf(".pdf") !== -1 || a.hasAttribute("download") || (a.innerText || "").toLowerCase().indexOf("cv") !== -1)) {
+            fetch(WEBHOOK + "?action=cv&tid=" + encodeURIComponent(tid), { mode: "no-cors" }).catch(function(){});
+          }
+        });
+      }
+    })();
+    </script>
 </body>
 </html>
