@@ -91,14 +91,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Custom Analytics Events ---
     
-    // CV Downloads
+    // CV Downloads (Enriquecido con ID de seguimiento de Recruiter si proviene del CRM)
     const cvDownloadES = document.getElementById('cvDownloadES');
     if (cvDownloadES) {
-        cvDownloadES.addEventListener('click', () => trackEvent('download_cv', { 'lang': 'es' }));
+        cvDownloadES.addEventListener('click', () => {
+            const tid = sessionStorage.getItem('cmr_tid');
+            trackEvent('download_cv', { 'lang': 'es', ...(tid ? { 'tracking_id': tid, 'source': 'recruiter_crm' } : {}) });
+        });
     }
     const cvDownloadEN = document.getElementById('cvDownloadEN');
     if (cvDownloadEN) {
-        cvDownloadEN.addEventListener('click', () => trackEvent('download_cv', { 'lang': 'en' }));
+        cvDownloadEN.addEventListener('click', () => {
+            const tid = sessionStorage.getItem('cmr_tid');
+            trackEvent('download_cv', { 'lang': 'en', ...(tid ? { 'tracking_id': tid, 'source': 'recruiter_crm' } : {}) });
+        });
     }
 
     // Github Projects

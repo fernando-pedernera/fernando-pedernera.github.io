@@ -454,22 +454,43 @@
 
     <script src="script.js"></script>
 
-    <!-- CMR Portfolio & CV Click Tracker -->
+    <!-- CMR Portfolio & CV Click Tracker + Google Analytics 4 (GA4) -->
     <script>
     (function() {
       var WEBHOOK = "https://script.google.com/macros/s/AKfycbyBgvneeL-iJRKhfnShQflGk5kZEtaLQ_0R1uLFN5HyipLy-1syUwlzzZUAAUIoj-wk/exec";
       var params = new URLSearchParams(window.location.search);
       var tid = params.get("ref") || sessionStorage.getItem("cmr_tid");
-      if (tid && WEBHOOK.indexOf("https://") === 0) {
+      if (tid) {
         sessionStorage.setItem("cmr_tid", tid);
+
+        // 1. Visita al Portfolio por Recruiter
         if (!sessionStorage.getItem("cmr_clicked_" + tid)) {
           sessionStorage.setItem("cmr_clicked_" + tid, "1");
-          fetch(WEBHOOK + "?action=click&tid=" + encodeURIComponent(tid), { mode: "no-cors" }).catch(function(){});
+
+          // Notificar al Radar Tracking (Google Apps Script)
+          if (WEBHOOK.indexOf("https://") === 0) {
+            fetch(WEBHOOK + "?action=click&tid=" + encodeURIComponent(tid), { mode: "no-cors" }).catch(function(){});
+          }
+
+          // Enviar evento enriquecido a Google Analytics 4 (GA4)
+          if (typeof gtag === "function") {
+            gtag("event", "recruiter_portfolio_visit", {
+              tracking_id: tid,
+              campaign_source: "recruiter_crm",
+              medium: params.get("utm_medium") || "crm_link",
+              campaign: params.get("utm_campaign") || "postulaciones"
+            });
+          }
         }
+
+        // 2. Clic en Descarga o Apertura de CV -> Notificar al Radar Tracking ($0)
         document.addEventListener("click", function(e) {
           var a = e.target.closest("a");
           if (a && (a.href.toLowerCase().indexOf(".pdf") !== -1 || a.hasAttribute("download") || (a.innerText || "").toLowerCase().indexOf("cv") !== -1)) {
-            fetch(WEBHOOK + "?action=cv&tid=" + encodeURIComponent(tid), { mode: "no-cors" }).catch(function(){});
+            // Notificar al Radar Tracking en Google Apps Script
+            if (WEBHOOK.indexOf("https://") === 0) {
+              fetch(WEBHOOK + "?action=cv&tid=" + encodeURIComponent(tid), { mode: "no-cors" }).catch(function(){});
+            }
           }
         });
       }
