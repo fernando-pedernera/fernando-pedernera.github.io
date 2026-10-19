@@ -151,6 +151,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             toast.innerHTML = `<i class="fa-solid fa-chart-line" style="color: var(--primary-hover); font-size: 1.2rem;"></i> <span><strong>${isEs ? 'Modo Admin Desactivado' : 'Admin Mode Disabled'}:</strong> ${isEs ? 'Tus visitas vuelven a registrarse en GA4.' : 'Your visits will be tracked in GA4.'}</span>`;
         }
+        const welcomeToastEl = document.getElementById('welcomeToast');
+        if (welcomeToastEl && !welcomeToastEl.classList.contains('hide')) {
+            toast.style.bottom = '98px';
+        }
         document.body.appendChild(toast);
         setTimeout(() => {
             toast.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -233,4 +237,75 @@ document.addEventListener("DOMContentLoaded", () => {
             trackEvent('click_contact', { 'method': method });
         });
     });
+
+    // --- Welcome Toast (5s Countdown + Pause on Hover + Close Button) ---
+    const welcomeToast = document.getElementById('welcomeToast');
+    if (welcomeToast) {
+        const welcomeTimer = document.getElementById('welcomeTimer');
+        const welcomeProgressBar = document.getElementById('welcomeProgressBar');
+        const welcomeCloseBtn = document.getElementById('welcomeCloseBtn');
+
+        const totalDuration = 5000; // 5 segundos solicitados
+        let remainingTime = totalDuration;
+        let isPaused = false;
+        let closed = false;
+
+        const closeToast = () => {
+            if (closed) return;
+            closed = true;
+            welcomeToast.classList.remove('show');
+            welcomeToast.classList.add('hide');
+            setTimeout(() => {
+                welcomeToast.remove();
+            }, 450);
+        };
+
+        if (welcomeCloseBtn) {
+            welcomeCloseBtn.addEventListener('click', closeToast);
+        }
+
+        // Pausar cuenta regresiva si el usuario pasa el mouse por encima para leer
+        welcomeToast.addEventListener('mouseenter', () => {
+            isPaused = true;
+        });
+
+        welcomeToast.addEventListener('mouseleave', () => {
+            isPaused = false;
+        });
+
+        // Entrada suave a los 600ms tras la carga de la página
+        setTimeout(() => {
+            welcomeToast.classList.add('show');
+
+            const step = 50;
+            const timerInterval = setInterval(() => {
+                if (closed) {
+                    clearInterval(timerInterval);
+                    return;
+                }
+
+                if (!isPaused) {
+                    remainingTime -= step;
+                    if (remainingTime < 0) remainingTime = 0;
+
+                    // Actualizar barra de progreso
+                    if (welcomeProgressBar) {
+                        const percent = (remainingTime / totalDuration) * 100;
+                        welcomeProgressBar.style.width = percent + '%';
+                    }
+
+                    // Actualizar contador numérico
+                    if (welcomeTimer) {
+                        const seconds = Math.ceil(remainingTime / 1000);
+                        welcomeTimer.textContent = seconds + 's';
+                    }
+
+                    if (remainingTime <= 0) {
+                        clearInterval(timerInterval);
+                        closeToast();
+                    }
+                }
+            }, step);
+        }, 600);
+    }
 });

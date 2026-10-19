@@ -452,6 +452,24 @@
         </div>
     </footer>
 
+    <!-- Welcome Toast Notification -->
+    <aside id="welcomeToast" class="welcome-toast" role="status" aria-live="polite">
+        <div class="welcome-toast-content">
+            <span class="welcome-toast-icon" aria-hidden="true">👋</span>
+            <div class="welcome-toast-text">
+                <span class="es">¡Gracias por visitar mi portfolio!</span>
+                <span class="en">Thanks for visiting my portfolio!</span>
+            </div>
+            <span class="welcome-toast-timer" id="welcomeTimer" title="Tiempo restante / Time remaining">5s</span>
+            <button class="welcome-toast-close" id="welcomeCloseBtn" aria-label="Cerrar / Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="welcome-toast-progress">
+            <div class="welcome-toast-bar" id="welcomeProgressBar"></div>
+        </div>
+    </aside>
+
     <script src="script.js"></script>
 
     <!-- CMR Portfolio & CV Click Tracker + Google Analytics 4 (GA4) -->

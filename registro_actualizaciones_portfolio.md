@@ -67,3 +67,15 @@ Este documento sirve como bitácora para repasar y entender todas las mejoras t�
   - Soporte de fallback para la API de Portapapeles (Clipboard API + `document.execCommand`).
   - Separación y enriquecimiento de la telemetría en GA4 (`click_contact` diferenciando `copy_email` y `linkedin`).
 
+## 9. Cartel de Bienvenida no Intrusivo (Welcome Toast con Cuenta Regresiva)
+- **Archivos modificados:** `index.html`, `script.js`, `styles.css`
+- **Objetivo:** Dar una bienvenida cálida y profesional al visitante agradeciendo su visita sin estorbar la lectura del contenido.
+- **Solución implementada:**
+  - **Diseño Glassmorphism Ampliado:** Integrado en la esquina inferior derecha con dimensiones más cómodas y legibles (`max-width: 440px`, padding `1.05rem 1.35rem`, icono ampliado a `1.5rem`), desenfoque de fondo (`backdrop-filter: blur(14px)`), bordes con brillo en azul Azure (`#0078D4`) y sombra flotante acorde a la estética general.
+  - **Duración de 5 segundos con contador visible:** Muestra un badge numérico dinámico (`5s` -> `4s` -> ... -> `1s`) y una barra de progreso inferior en degradado (Azure a Teal) que se consume en tiempo real a lo largo de los 5 segundos.
+  - **Pausa al pasar el cursor (*Hover Pause*):** Si el visitante coloca el cursor sobre el cartel, la cuenta regresiva y la barra se detienen para permitirle leer con tranquilidad; al retirar el cursor, el temporizador continúa.
+  - **Cierre manual anticipado:** Botón `✕` accesible para descartarlo de inmediato.
+  - **Bilingüe (ES / EN):** Contenido sincronizado con el botón de idioma del portfolio mediante las clases `html.es` y `html.en`.
+  - **Adaptabilidad Móvil:** En pantallas pequeñas se reposiciona de forma centrada en la base sin desbordar ni tapar botones clave.
+  - **Compatibilidad con Modo Admin:** Si el autor visita el sitio con `?admin=true`, los avisos se apilan verticalmente sin solaparse.
+
