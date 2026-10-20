@@ -374,6 +374,19 @@ a {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
 
+@media (min-width: 769px) {
+    .projects-grid .project-card:first-child {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, rgba(22, 27, 34, 0.78), rgba(0, 120, 212, 0.12));
+        border-color: rgba(0, 120, 212, 0.45);
+    }
+
+    .projects-grid .project-card:first-child .description {
+        max-width: 950px;
+        margin-bottom: 1.2rem;
+    }
+}
+
 .dashboards-grid {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
