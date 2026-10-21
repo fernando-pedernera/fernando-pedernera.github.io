@@ -90,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
             htmlTag.setAttribute('lang', 'es');
         }
         trackEvent('toggle_language', { 'language': newLang });
+        if (typeof showWelcomeToast === 'function') {
+            showWelcomeToast();
+        }
     });
 
     // --- Custom Analytics Events ---
@@ -239,8 +242,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- Welcome Toast (5s Countdown + Pause on Hover + Close Button) ---
+    // --- Welcome Toast (5s Countdown + Pause on Hover + Close Button + Re-trigger on Language Change) ---
     const welcomeToast = document.getElementById('welcomeToast');
+    let showWelcomeToast = null;
+
     if (welcomeToast) {
         const welcomeTimer = document.getElementById('welcomeTimer');
         const welcomeProgressBar = document.getElementById('welcomeProgressBar');
@@ -250,38 +255,49 @@ document.addEventListener("DOMContentLoaded", () => {
         let remainingTime = totalDuration;
         let isPaused = false;
         let closed = false;
+        let timerInterval = null;
+        let initialTimeout = null;
 
         const closeToast = () => {
             if (closed) return;
             closed = true;
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
             welcomeToast.classList.remove('show');
             welcomeToast.classList.add('hide');
-            setTimeout(() => {
-                welcomeToast.remove();
-            }, 450);
         };
 
-        if (welcomeCloseBtn) {
-            welcomeCloseBtn.addEventListener('click', closeToast);
-        }
+        showWelcomeToast = () => {
+            if (initialTimeout) {
+                clearTimeout(initialTimeout);
+                initialTimeout = null;
+            }
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
 
-        // Pausar cuenta regresiva si el usuario pasa el mouse por encima para leer
-        welcomeToast.addEventListener('mouseenter', () => {
-            isPaused = true;
-        });
-
-        welcomeToast.addEventListener('mouseleave', () => {
+            closed = false;
             isPaused = false;
-        });
+            remainingTime = totalDuration;
 
-        // Entrada suave a los 600ms tras la carga de la página
-        setTimeout(() => {
+            if (welcomeProgressBar) {
+                welcomeProgressBar.style.width = '100%';
+            }
+            if (welcomeTimer) {
+                welcomeTimer.textContent = '5s';
+            }
+
+            welcomeToast.classList.remove('hide');
             welcomeToast.classList.add('show');
 
             const step = 50;
-            const timerInterval = setInterval(() => {
+            timerInterval = setInterval(() => {
                 if (closed) {
                     clearInterval(timerInterval);
+                    timerInterval = null;
                     return;
                 }
 
@@ -302,11 +318,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     if (remainingTime <= 0) {
-                        clearInterval(timerInterval);
                         closeToast();
                     }
                 }
             }, step);
-        }, 600);
+        };
+
+        if (welcomeCloseBtn) {
+            welcomeCloseBtn.addEventListener('click', closeToast);
+        }
+
+        // Pausar cuenta regresiva si el usuario pasa el mouse por encima para leer
+        welcomeToast.addEventListener('mouseenter', () => {
+            isPaused = true;
+        });
+
+        welcomeToast.addEventListener('mouseleave', () => {
+            isPaused = false;
+        });
+
+        // Entrada suave a los 600ms tras la carga de la página
+        initialTimeout = setTimeout(showWelcomeToast, 600);
     }
 });

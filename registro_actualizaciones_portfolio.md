@@ -75,7 +75,7 @@ Este documento sirve como bitácora para repasar y entender todas las mejoras t�
   - **Duración de 5 segundos con contador visible:** Muestra un badge numérico dinámico (`5s` -> `4s` -> ... -> `1s`) y una barra de progreso inferior en degradado (Azure a Teal) que se consume en tiempo real a lo largo de los 5 segundos.
   - **Pausa al pasar el cursor (*Hover Pause*):** Si el visitante coloca el cursor sobre el cartel, la cuenta regresiva y la barra se detienen para permitirle leer con tranquilidad; al retirar el cursor, el temporizador continúa.
   - **Cierre manual anticipado:** Botón `✕` accesible para descartarlo de inmediato.
-  - **Bilingüe (ES / EN):** Contenido sincronizado con el botón de idioma del portfolio mediante las clases `html.es` y `html.en`.
+  - **Bilingüe y Reactivable al Cambiar Idioma (ES / EN):** Contenido sincronizado con el botón de idioma del portfolio (`html.es` / `html.en`). Al cambiar el idioma (por ejemplo, al pasar a inglés después de que el cartel inicial ya se ocultó), el mensaje vuelve a activarse automáticamente con su cuenta regresiva completa de 5 segundos en el nuevo idioma.
   - **Adaptabilidad Móvil:** En pantallas pequeñas se reposiciona de forma centrada en la base sin desbordar ni tapar botones clave.
   - **Compatibilidad con Modo Admin:** Si el autor visita el sitio con `?admin=true`, los avisos se apilan verticalmente sin solaparse.
 
