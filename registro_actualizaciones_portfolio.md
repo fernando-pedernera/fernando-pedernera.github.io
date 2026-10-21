@@ -13,7 +13,7 @@ Este documento sirve como bitácora para repasar y entender todas las mejoras t�
   - Se insertó el script global de Google Analytics en el `<head>` usando el ID de medición provisto (`G-XKD2H4L1LE`).
   - Se desarrolló una función auxiliar `trackEvent` en `script.js` para enviar eventos personalizados a GA4.
 - **Métricas personalizadas configuradas:**
-  - `download_cv`: Rastrea descargas del CV diferenciando el idioma (EN/ES).
+  - `download_cv_es` / `download_cv_en`: Rastrea descargas del CV diferenciando directamente el idioma (ES/EN) en la tabla principal de eventos de GA4, usando `transport_type: 'beacon'` para evitar pérdida de eventos al abrir el PDF, mientras que el evento nativo `file_download` consolida el total general.
   - `click_github_project`: Rastrea clics hacia repositorios, capturando el nombre del proyecto.
   - `view_powerbi_dashboard`: Rastrea clics hacia dashboards interactivos.
   - `click_contact`: Mide la interacción con LinkedIn y el correo electrónico.

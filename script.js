@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Analytics tracking helper (respetando exclusión de tráfico propio y bots)
-    const trackEvent = (eventName, eventParams) => {
+    const trackEvent = (eventName, eventParams = {}) => {
         if (typeof gtag === 'function' && !window.isAnalyticsDisabled && localStorage.getItem('fp_analytics_disabled') !== 'true') {
-            gtag('event', eventName, eventParams);
+            gtag('event', eventName, {
+                transport_type: 'beacon',
+                ...eventParams
+            });
         }
     };
 
@@ -91,19 +94,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Custom Analytics Events ---
     
-    // CV Downloads (Enriquecido con ID de seguimiento de Recruiter si proviene del CRM)
+    // CV Downloads (Separado por idioma para visualización directa en GA4 + ID de seguimiento de Recruiter CRM)
     const cvDownloadES = document.getElementById('cvDownloadES');
     if (cvDownloadES) {
         cvDownloadES.addEventListener('click', () => {
             const tid = sessionStorage.getItem('cmr_tid');
-            trackEvent('download_cv', { 'lang': 'es', ...(tid ? { 'tracking_id': tid, 'source': 'recruiter_crm' } : {}) });
+            trackEvent('download_cv_es', {
+                lang: 'es',
+                file_name: 'Fernando_Pedernera_CV_ES.pdf',
+                ...(tid ? { tracking_id: tid, source: 'recruiter_crm' } : {})
+            });
         });
     }
     const cvDownloadEN = document.getElementById('cvDownloadEN');
     if (cvDownloadEN) {
         cvDownloadEN.addEventListener('click', () => {
             const tid = sessionStorage.getItem('cmr_tid');
-            trackEvent('download_cv', { 'lang': 'en', ...(tid ? { 'tracking_id': tid, 'source': 'recruiter_crm' } : {}) });
+            trackEvent('download_cv_en', {
+                lang: 'en',
+                file_name: 'Fernando_Pedernera_CV_EN.pdf',
+                ...(tid ? { tracking_id: tid, source: 'recruiter_crm' } : {})
+            });
         });
     }
 
